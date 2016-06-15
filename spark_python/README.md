@@ -42,10 +42,10 @@ Now you can parse the csv files as spark DataFrame,refer to more detailed [api](
 >
 from pyspark.sql import SQLContext  
 sqlContext = SQLContext(sc)
-df = sqlContext.read.format('com.databricks.spark.csv').options(header='true',inferschema='true').load('FILE_PATH')
-\# do some manipulations on DataFrame object in pyspark
-df.show()  
-df.printSchema()   
+df = sqlContext.read.format('com.databricks.spark.csv').options(header='true',inferschema='true').load('FILE_PATH')    
+# do some manipulations on DataFrame object in pyspark   
+df.show()    
+df.printSchema()     
 df.select("COLUMN_NAME").show()  
 df.filter(df[‘COLUMN_NAME’] > 21).show()  
 df.groupBy(“COLUMN_NAME”),count.show()  
