@@ -57,16 +57,22 @@ Now you can simply use one line code to transfer DataFrame in spark to Pandas Da
 >df_pandas = df.toPandas()
 
 #### Bound the ipython notebook with pyspark
-Suppose you OK on the previous steps, now you can bound the pyspark with ipython notebook, refer to the [link](https://gist.github.com/ololobus/4c221a0891775eaa86b0)
-.   
-To lunch the notebook, type in the commend line:
+Suppose you OK on the previous steps, now you can bound the pyspark with ipython notebook,   
+- 1: refer to the [link](https://gist.github.com/ololobus/4c221a0891775eaa86b0)  and make pyspark file in ipython notebook, then
+to lunch the notebook, type in the commend line:
 >IPYTHON_OPTS="notebook" pyspark --packages com.databricks:spark-csv_2.11:1.4.0
 
-There is a test1.ipynb in the directory, just try it to test whether you are bound notebook and pyspark correctly.  
+
+- 2: A more simple one, you will automatically use the notebook when you launch the pyspark, just add these two lines in your .bash_profile(in mac)
+>export PYSPARK_DRIVER_PYTHON="jupyter"  
+export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
+
+Then type pyspark in the commend line will automatically lunch the notebook.
+
+There is a test1.ipynb in the directory, just try it to test whether you are bound notebook and pyspark correctly.   
 Reminder: Don't forget to include the external package when lunching the notebook.
 
-
-# Possible Problems and Notifications
+## Possible Problems and Notifications
 - Notice the version of the external package spark-csv, based on my trials, version spark-csv_2.10:1.0.3 is not working when parsing the csv files, but spark-csv_2.11:1.4.0 is fine.
 - About the FILE_PATH when load the csv file from local or HDFS
 The FILE_PATH in the local should be the absolute path. The FILE_PATH in the HDFS clustering should be in the form:  
@@ -76,3 +82,4 @@ YOUR_SETTING_IN_NAMENODE corresponds to the hdfs-site.xml in namenode machine, t
 - Feel free to make alias when lunching the notebook with pyspark.
 - Other references:
    - [python spark 入门](http://blog.jobbole.com/86232/)
+   - [一个spark 的国内网站](http://www.iteblog.com/archives/tag/spark)
